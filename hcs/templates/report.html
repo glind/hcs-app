@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- report_detail.html -->
+
+<h1>{{ report.title }}</h1>
+<p>Category: {{ report.category }}</p>
+<p>Description: {{ report.description }}</p>
+
+<!-- Display existing votes -->
+<h3>Vote count:</h3>
+<p>Upvotes: {{ report.upvotes.count }}</p>
+<p>Downvotes: {{ report.downvotes.count }}</p>
+
+<!-- Vote Form -->
+<h3>Vote on this report:</h3>
+<form method="post" action="{% url 'vote_report' report.id %}">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Submit Vote</button>
+</form>
+
+{% endblock content %}

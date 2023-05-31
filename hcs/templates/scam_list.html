@@ -1,0 +1,73 @@
+<!-- scam_report/list.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block page_title %}Report List{% endblock %}
+{% load custom_filters %}
+
+{% block content %}
+  <div class="container my-4">
+    <form method="get" action="{% url 'list' %}" class="mb-4">
+      <div class="input-group">
+        <input type="search" name="search_query" class="form-control" placeholder="Search for a report...">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
+    <form method="get" action="{% url 'list' %}" class="mb-4">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="mb-3">
+            <label for="id_tags" class="form-label">Tags</label>
+            <input type="text" class="form-control" id="id_tags" name="tags" value="{{ request.GET.tags }}">
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    <h2>Reports</h2>
+    {% if request.GET.search_query %}<div>filtered by: {{ request.GET.search_query }}</div>{% endif %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      {% for report in reports %}
+      <div class="col col-lg-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <a href="{% url 'detail' report.pk %}"><h5 class="card-title">{{ report.category }}</h5></a>
+            <p class="card-text">{{ report.description }}</p>
+            <p class="card-text">Tags: <span class="btn btn-outline-info btn-sm">{{ report.tags }}</span></p>
+            <p class="card-text">URL: {{ report.url }}</p>
+            <p class="card-text">Email: {{ report.report_email }}</p>
+            <p class="card-text">Phone: {{ report.report_phone }}</p>
+            <p class="card-text">Severity: {{ report.url }}</p>
+            <p class="card-text">Status: {{ report.report_status }}</p>
+            <p class="card-text">Score: {{ report.aggregate_score }}</p>
+            <ul class="list-group list-group-flush">
+              {% if report.up_vote_count or report.down_vote_count %}
+              <li class="list-group-item">
+                <h6>Up {{ report.up_vote_count }}</h6>
+                <h6>Down {{ report.down_vote_count }}</h6>
+              </li>
+              {% else %}
+              <li class="list-group-item">
+                <h6>No Votes Yes</h6>
+                <p><a href="{% url 'detail' report.pk %}">Review and Vote</a></p>
+              </li>
+              {% endif %}
+            </ul>
+            <div class="d-grid gap-2">
+              <a href="{% url 'detail' report.pk %}" class="btn btn-primary" type="button">Vote</a>
+              {% if request.user.is_authenticated %}
+              <a href="{% url 'update' report.pk %}"" class="btn btn-info" type="button">EDIT Report Details</a>
+              <a href="{% url 'delete' report.pk %}"" class="btn btn-alert" type="button">DELETE REPORT</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+{% endblock content %}
+

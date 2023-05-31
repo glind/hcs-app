@@ -1,0 +1,63 @@
+<!-- scam_report/detail.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>{{ report.category }}</h1>
+      <p><strong>description:</strong> {{ report.description }}</p>
+      <p><strong>Level:</strong> {{ report.get_level_display }}</p>
+      <p><strong>Description:</strong> {{ report.description }}</p>
+      <p><strong>aggregate_score:</strong> {{ report.aggregate_score }}</p>
+      <p><strong>timestamp:</strong> {{ report.timestamp }}</p>
+      <p><strong>location_country:</strong> {{ report.location_country }}</p>
+      <p><strong>location_state:</strong> {{ report.location_state }}</p>
+      <p><strong>location_city:</strong> {{ report.location_city }}</p>
+      <p><strong>report_email:</strong> {{ report.report_email }}</p>
+      <p><strong>report_phone:</strong> {{ report.report_phone }}</p>
+      <p><strong>URL:</strong> <a href="{{ report.url }}">{{ report.url }}</a></p>
+      <p><strong>Status:</strong> {{ report.report_status }}</p>
+      <p><strong>Tags:</strong>
+        {% for tag in report.tags.all %}
+          <span class="badge badge-primary">{{ tag.name }}</span>
+        {% endfor %}
+      </p>
+    
+    </div>
+    <div class="col-md-4">
+      <h3>Notes</h3>
+      <p><strong>investigator_notes:</strong> {{ report.investigator_notes}}</p>
+      <p><strong>action_taken:</strong> {{ report.action_taken }}</p>
+      <p><strong>feedback:</strong> {{ report.feedback}}</p>
+      {% if request.user.is_authenticated %}
+      <h2> Investigators Only</h2>
+      <p><strong>Priority:</strong> {{ report.issue.priority }}</p>
+      <p><strong>source:</strong> {{ report.source }}</p>
+      <p><strong>Reporter Name:</strong> {{ report.your_full_name }}</p>
+      <p><strong>Reporter Email:</strong> {{ report.your_email }}</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8">
+      <!-- Display existing votes -->
+      <h3>Vote count:</h3>
+      <p>Upvotes: {{ up_vote_count}}</p>
+      <p>Downvotes: {{ down_vote_count }}</p>
+
+      <!-- Vote Form -->
+      <h3>Vote on this report:</h3>
+      <form method="post" action="{% url 'vote_report' report.id %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit Vote</button>
+      </form>
+    </div>
+  </div>
+  <br/>
+  <a type="submit" class="btn btn-primary" href="/reports">Back to Report List</a>
+
+</div>
+{% endblock %}

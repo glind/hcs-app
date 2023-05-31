@@ -1,0 +1,103 @@
+{% load static %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div class="hero-container">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide 1 -->
+        <div class="carousel-item active" data-bs-interval="5000" style="background-image: url({% static 'assets/img/slide/slide-1.jpg' %})">
+          <div class="carousel-container">
+            <div class="carousel-content">
+              <h2 class="animate__animated animate__fadeInDown">Hack, Crack or Scam</h2>
+              <p class="hero-light">
+                Uncover the Good, Expose the Bad
+              </p>
+              <a href="/report" class="btn-get-started animate__animated animate__fadeInUp">Report Now</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" data-bs-interval="5000" style="background-image: url({% static 'assets/img/slide/slide-2.jpg' %})">
+          <div class="carousel-container">
+            <div class="carousel-content">
+              <h2 class="animate__animated animate__fadeInDown">Discover Hidden Threats</h2>
+              <p class="animate__animated animate__fadeInUp">Identify scams, cracks, and unethical practices lurking on the web.</p>
+              <a href="/report" class="btn-get-started animate__animated animate__fadeInUp">Report Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </div>
+</section><!-- End Hero -->
+
+
+<main id="main">
+
+
+<section id="intro" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="display-4">Welcome to Hack, Crack or Scam</h1>
+        <p class="lead">Reporting the Bad, Promoting the Good</p>
+        <p>At Hack, Crack or Scam, we believe in making the internet a safer place for everyone. Our platform empowers users to report suspicious activities, scams, and unethical practices, while also highlighting positive aspects of hacking that contribute to innovation and security.</p>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/report.jpeg' %}" alt="Reporting Image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reporting" class="bg-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="display-5">Reporting Scams and Unethical Practices</h2>
+        <p>We encourage users to report scams, fraudulent activities, and unethical practices they encounter online. By reporting such incidents, you help protect others from falling victim to these malicious schemes. Our platform provides an easy way to document and share your experiences, allowing us to raise awareness and take appropriate actions against the wrongdoers.</p>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/scam.jpeg' %}" alt="Reporting Scam Image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="positive-hacking" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h2 class="display-5">Promoting Positive Hacking</h2>
+        <p>Hacking isn't always malicious. It can be a force for good, driving innovation, improving security, and finding vulnerabilities before they are exploited. At Hack, Crack or Scam, we recognize the positive aspects of hacking and provide a platform to share stories, tools, and techniques that contribute to a safer digital world. Together, we can embrace ethical hacking and foster a community dedicated to cybersecurity.</p>
+      </div>
+      <div class="col-lg-6">
+        <img src="{% static 'img/hack.jpeg' %}" alt="Positive Hacking Image" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="donate" class="bg-light py-5">
+  <div class="container text-center">
+    <h2 class="display-5">Support Our Cause</h2>
+    <p>Help us continue our mission of making the internet safer by supporting our non-profit organization. Your donations enable us to improve our services, enhance security measures, and expand our efforts to combat scams and unethical practices. Together, we can build a more secure digital ecosystem.</p>
+    <a href="#" class="btn btn-primary btn-lg">Donate Now</a>
+  </div>
+</section>
+</main>
+
